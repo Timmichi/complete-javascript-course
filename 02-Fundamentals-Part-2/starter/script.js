@@ -14,13 +14,11 @@
 // logger();
 // logger();
 
-
 // ways to create a function
-
 
 // function declarations
 function calcAge1(birthYear) {
-    return 2037 - birthYear;
+  return 2037 - birthYear;
 }
 
 // function expression: this is an anonymous function that we set equal to calcAge2. Function is now calcAge2. Function expression. Functions are just values, like strings or numbers (but it's not a type). We can store it in variables.
@@ -31,7 +29,6 @@ function calcAge1(birthYear) {
 // const age1 = calcAge1(1991);
 // const age2 = calcAge2(1991);
 // console.log(age1, age2);
-
 
 // With a function declaration, we can call the function BEFORE it is declared. But with a function expression, we CANNOT.
 
@@ -46,8 +43,6 @@ function calcAge1(birthYear) {
 
 // console.log(yearsUntilRetirement(1991));
 
-
-
 // const calcAverage = (s1, s2, s3) => (s1*s2*s3)/3;
 
 // const checkWinner = function(avgDolphins, avgKoalas) {
@@ -59,7 +54,6 @@ function calcAge1(birthYear) {
 // const scoreDolphins = calcAverage(44,23,71);
 // const scoreKoalas = calcAverage(65,54,49);
 // checkWinner(scoreDolphins, scoreKoalas);
-
 
 // // Two ways to create arrays:
 // const numbers = [1,2,3,4];
@@ -81,7 +75,7 @@ function calcAge1(birthYear) {
 // console.log(newLength);
 // friends.unshift('John'); // adds to front of array and returns length of array
 // // pop() and shift() return the popped element INSTEAD of the length
-// friends.pop(); // removes last element of array 
+// friends.pop(); // removes last element of array
 // friends.shift(); //removes first element of array
 // console.log(friends.indexOf('Steven')); // will give us the index of element
 
@@ -112,7 +106,7 @@ function calcAge1(birthYear) {
 
 // // . operator will go to object and retrieve the property specified
 // console.log(jonas.lastName);
-// // in bracket notation, we can put any expression we'd like. 
+// // in bracket notation, we can put any expression we'd like.
 // // We can't do this in dot notation
 // console.log(jonas['lastName']);
 // // for example...
@@ -139,7 +133,6 @@ function calcAge1(birthYear) {
 
 // console.log(`${jonas.firstName} has ${jonas.friends.length} friends, and his best friend is called ${jonas.friends[0]}`)
 
-
 // we can create methods in our objects. A method is a function that is a property in our object
 // const jonas= {
 //     firstName: 'Jonas',
@@ -163,7 +156,6 @@ function calcAge1(birthYear) {
 //         return `${this.firstName} is a ${this.calcAge()}-year old teacher, and he has ${this.hasDriversLicense ? "a" : "no"} driver's license`
 //     }
 // };
-
 
 // the object that is calling "calcAge" is "jonas", and thus inside the method calcAge(), the "this" keyword will be referring to the "jonas" object
 // console.log(jonas.calcAge(jonas.birthYear));
@@ -203,45 +195,27 @@ function calcAge1(birthYear) {
 //     console.log(`Lifting weights repitition {rep}`);
 // }
 
-const bills = [22, 295,176, 440, 37, 105, 10, 1100, 86, 52];
+const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
 const tips = [];
 const totals = [];
 
 const calcTip = function (bill) {
-    return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
-  }
+  return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+};
 
 let tip;
 for (let i = 0; i < bills.length; i++) {
-    tip = calcTip(bills[i]);
-    totals.push(bills[i]+tip);
-    tips.push(tip);
+  tip = calcTip(bills[i]);
+  totals.push(bills[i] + tip);
+  tips.push(tip);
 }
 
-const calcAverage = function(arr) {
-    let sum = 0;
-    for (let i = 0; i < arr.length; i++) {
-        sum += arr[i];
-    }
-    return sum/arr.length;
-}
+const calcAverage = function (arr) {
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i];
+  }
+  return sum / arr.length;
+};
 console.log(tips, totals);
 console.log(calcAverage(tips));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
