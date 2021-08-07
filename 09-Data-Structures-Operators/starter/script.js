@@ -39,6 +39,9 @@ const restaurant = {
       `Order received! ${this.starterMenu[si]} and ${this.mainMenu[mi]} will be delivered to ${addy} at ${t}`
     );
   },
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(`Here is your delicious pasta with ${ing1}, ${ing2}, ${ing3}`);
+  },
 };
 
 restaurant.orderDelivery({
@@ -113,3 +116,63 @@ console.log(o, c);
 // // useful for apis where we don't know how much info we gonna get or if there's missing info
 // const [a = 1, b = 1, c = 1] = [8, 9];
 // console.log(a, b, c);
+
+//Spread operator
+const arr = [7, 8, 9];
+const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
+console.log(badNewArr);
+
+// it will unpack all the elements of the array and putting it in newArr. It is liked adding two arrays in python, except we can place it wherever we want!
+const newArr = [1, ...arr, 2];
+console.log(newArr);
+
+const newMenu = [...restaurant.mainMenu, 'Gnocci'];
+console.log(newMenu);
+
+// Copy array does a shallow copy. It does not grab objects within objects. only primitives get copied.
+const mainMenuCopy = [...restaurant.mainMenu];
+mainMenuCopy.push('Martabak');
+console.log(restaurant.mainMenu, mainMenuCopy);
+
+// Spread operator works on any iterables!
+const str = 'Jonas';
+const letters = [...str, ' ', 'S.'];
+console.log(letters);
+console.log(...str);
+
+const ingredients = [
+  prompt("Let's make pasta! Ingredient 1?"),
+  prompt('Ingredient 2?'),
+  prompt('Ingredient 3?'),
+];
+console.log(ingredients);
+// use spread to put in arguments to a function
+restaurant.orderPasta(...ingredients);
+
+// With ES 2018, spread operator also works on objects even though they aren't iterables
+// Objects
+const newRestaurant = { ...restaurant, founder: 'Guiseppe' };
+console.log(newRestaurant);
+
+// spread allows us to make a shallow copy and change primitive types. The objects within are still the same though unless we reassign them.
+const restaurantCopy = { ...restaurant };
+restaurantCopy.name = 'ristorante Roma';
+restaurantCopy.openingHours = { fri: 'nice try' };
+console.log(restaurantCopy.openingHours);
+console.log(restaurant.openingHours);
+
+// SPREAD, because on RIGHT side of =
+const arr2 = [1, 2, ...[3, 4]];
+
+// REST , because on LEFT side of =
+const [s, t, ...others] = [1, 2, 3, 4, 5];
+console.log(s, t, others);
+
+// does not include the skipped element in the list. REST will always take the last few elements/last element in the list. THus, there can only be one REST in any destructuring
+const [pizza, , risotto, ...otherFood] = [
+  ...restaurant.mainMenu,
+  ...restaurant.starterMenu,
+];
+console.log(pizza, risotto, otherFood);
+
+// REST in objects
