@@ -42,6 +42,10 @@ const restaurant = {
   orderPasta: function (ing1, ing2, ing3) {
     console.log(`Here is your delicious pasta with ${ing1}, ${ing2}, ${ing3}`);
   },
+  orderPiaza: function (mainIngredient, ...otherIngredients) {
+    console.log(mainIngredient);
+    console.log(otherIngredients);
+  },
 };
 
 restaurant.orderDelivery({
@@ -117,62 +121,114 @@ console.log(o, c);
 // const [a = 1, b = 1, c = 1] = [8, 9];
 // console.log(a, b, c);
 
-//Spread operator
-const arr = [7, 8, 9];
-const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
-console.log(badNewArr);
+// //Spread operator
+// const arr = [7, 8, 9];
+// const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
+// console.log(badNewArr);
 
-// it will unpack all the elements of the array and putting it in newArr. It is liked adding two arrays in python, except we can place it wherever we want!
-const newArr = [1, ...arr, 2];
-console.log(newArr);
+// // it will unpack all the elements of the array and putting it in newArr. It is liked adding two arrays in python, except we can place it wherever we want!
+// const newArr = [1, ...arr, 2];
+// console.log(newArr);
 
-const newMenu = [...restaurant.mainMenu, 'Gnocci'];
-console.log(newMenu);
+// const newMenu = [...restaurant.mainMenu, 'Gnocci'];
+// console.log(newMenu);
 
-// Copy array does a shallow copy. It does not grab objects within objects. only primitives get copied.
-const mainMenuCopy = [...restaurant.mainMenu];
-mainMenuCopy.push('Martabak');
-console.log(restaurant.mainMenu, mainMenuCopy);
+// // Copy array does a shallow copy. It does not grab objects within objects. only primitives get copied.
+// const mainMenuCopy = [...restaurant.mainMenu];
+// mainMenuCopy.push('Martabak');
+// console.log(restaurant.mainMenu, mainMenuCopy);
 
-// Spread operator works on any iterables!
-const str = 'Jonas';
-const letters = [...str, ' ', 'S.'];
-console.log(letters);
-console.log(...str);
+// // Spread operator works on any iterables!
+// const str = 'Jonas';
+// const letters = [...str, ' ', 'S.'];
+// console.log(letters);
+// console.log(...str);
 
-const ingredients = [
-  prompt("Let's make pasta! Ingredient 1?"),
-  prompt('Ingredient 2?'),
-  prompt('Ingredient 3?'),
-];
-console.log(ingredients);
-// use spread to put in arguments to a function
-restaurant.orderPasta(...ingredients);
+// const ingredients = [
+//   prompt("Let's make pasta! Ingredient 1?"),
+//   prompt('Ingredient 2?'),
+//   prompt('Ingredient 3?'),
+// ];
+// console.log(ingredients);
+// // use spread to put in arguments to a function
+// restaurant.orderPasta(...ingredients);
 
-// With ES 2018, spread operator also works on objects even though they aren't iterables
-// Objects
-const newRestaurant = { ...restaurant, founder: 'Guiseppe' };
-console.log(newRestaurant);
+// // With ES 2018, spread operator also works on objects even though they aren't iterables
+// // Objects
+// const newRestaurant = { ...restaurant, founder: 'Guiseppe' };
+// console.log(newRestaurant);
 
-// spread allows us to make a shallow copy and change primitive types. The objects within are still the same though unless we reassign them.
-const restaurantCopy = { ...restaurant };
-restaurantCopy.name = 'ristorante Roma';
-restaurantCopy.openingHours = { fri: 'nice try' };
-console.log(restaurantCopy.openingHours);
-console.log(restaurant.openingHours);
+// // spread allows us to make a shallow copy and change primitive types. The objects within are still the same though unless we reassign them.
+// const restaurantCopy = { ...restaurant };
+// restaurantCopy.name = 'ristorante Roma';
+// restaurantCopy.openingHours = { fri: 'nice try' };
+// console.log(restaurantCopy.openingHours);
+// console.log(restaurant.openingHours);
 
-// SPREAD, because on RIGHT side of =
-const arr2 = [1, 2, ...[3, 4]];
+// // SPREAD, because on RIGHT side of =
+// const arr2 = [1, 2, ...[3, 4]];
 
-// REST , because on LEFT side of =
-const [s, t, ...others] = [1, 2, 3, 4, 5];
-console.log(s, t, others);
+// // REST , because on LEFT side of =
+// const [s, t, ...others] = [1, 2, 3, 4, 5];
+// console.log(s, t, others);
 
-// does not include the skipped element in the list. REST will always take the last few elements/last element in the list. THus, there can only be one REST in any destructuring
-const [pizza, , risotto, ...otherFood] = [
-  ...restaurant.mainMenu,
-  ...restaurant.starterMenu,
-];
-console.log(pizza, risotto, otherFood);
+// // does not include the skipped element in the list. REST will always take the last few elements/last element in the list. THus, there can only be one REST in any destructuring
+// const [pizza, , risotto, ...otherFood] = [
+//   ...restaurant.mainMenu,
+//   ...restaurant.starterMenu,
+// ];
+// console.log(pizza, risotto, otherFood);
 
-// REST in objects
+// // REST in objects
+// const { sat, ...weekdays } = restaurant.openingHours;
+// console.log(weekdays);
+
+// // REST in functions (packing arguments into an array called "numbers")
+// // this is better than just passing an array, cause now the add function can accept both arrays and a sequence of values
+// const add = function (...numbers) {
+//   console.log(numbers);
+// };
+// add(2, 3);
+// add(5, 3, 7, 2);
+// add(8, 2, 5, 3, 2, 1, 4);
+// const arrx = [23, 4, 5];
+// add(...arrx);
+
+//Use ANY data type, return ANY data type, short-circuiting
+console.log(3 || 'Jonas'); // if first operand is truthy, then second operand will not be evaluated
+console.log('' || 'Jonas');
+consoloe.log(true || 0);
+console.log(undefined || null); //undefined is falsey value, but so is null, but since it is the last one, it will return null.
+
+restaurant.numGuests = 23;
+const guess1 = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guests1);
+
+const guests2 = restaurant.numGuests || 10; //if numGuests exists, guests2 = 23. If not, we will get 10. This is better than if else or turnary.
+console.log(guests2);
+
+console.log(0 && 'Jonas'); //returns 0
+console.log(7 && 'Jonas'); //returns jonas
+conosle.log('Hello' && 23 && null && 'jonas'); // returns null
+
+// pratical example of short circuit
+if (restaurant.orderPizza) {
+  restaurant.orderPizza('mushrooms', 'spinach');
+}
+// if restaurant.orderPizza doesn't exist, then short circuit and do nothing. However, if it does exist, we can change the order
+restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
+
+// OR operator will return the first truthy value of all operands, or the last operand if all of them are falsey
+// AND operator will return the first falsey value or the last value if all of them are truthy
+
+//OR: set default values
+//AND: execute second operand if first one is true
+
+// restaurant.numGuests = 0;
+const guess = restaurant.numGuests || 10;
+console.log(guests);
+
+// Nullish coalescing operator: null and undefined (NOT 0 or '') This works for 0 and ''.
+const guestCorrect = restaurant.numGuests ?? 10; // returns 10 if restaurant.numGuests is null or undefined
+
+console.log(guestCorrect);
