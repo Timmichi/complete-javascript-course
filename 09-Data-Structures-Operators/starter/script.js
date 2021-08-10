@@ -42,7 +42,8 @@ const restaurant = {
   orderPasta: function (ing1, ing2, ing3) {
     console.log(`Here is your delicious pasta with ${ing1}, ${ing2}, ${ing3}`);
   },
-  orderPiaza: function (mainIngredient, ...otherIngredients) {
+  // ES6 enhanced object literals (We can write function properties like this too!)
+  orderPizza(mainIngredient, ...otherIngredients) {
     console.log(mainIngredient);
     console.log(otherIngredients);
   },
@@ -54,41 +55,141 @@ restaurant.orderDelivery({
   starterIndex: 2,
 });
 
-// Destructuring Objects
-const { name, openingHours, categories } = restaurant; // here, we get the properties of the objects by calling their name and putting it in a variable with the same name. There is no order to this like destructuring lists.
+// set accepts an iterable
+const ordersSet = new Set(['Pasta', 'Pizza', 'Risotto', 'Pasta', 'Pizza']);
+console.log(ordersSet);
+console.log(new Set('Jonas'));
+console.log(orderSet.size);
+console.log(orderSet.has('Pizza'));
+console.log(orderSet.has('Bread'));
+ordersSet.add('Garlic Bread');
+ordersSet.delete('Risotto');
+// we cannot index in a set. all values are unique, and there is no order. don't use a set if you care about the order.
+// ordersSet.clear(); // delete everything in set
+for (const order of ordersSet) console.log(order);
 
-// To change the name of these properties, we have to do this:
-console.log(name, openingHours, categories);
-const {
-  name: restaurantName, // e.g. restaurantName is the new name of the variable for the name property
-  openingHours: hours,
-  categories: tags,
-} = restaurant;
-console.log(restaurantName, hours, tags);
+// Example
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+const staffUnique = [...new Set(staff)];
+console.log(staffUnique);
 
-// here we are setting default values AND renaming the variables
-const { menu = [], starterMenu: starters = [] } = restaurant;
-console.log(menu, starters);
+const rest = new Map();
+rest.set('name', 'Classico Italiano');
+rest.set(1, 'Firenze, Italy');
+console.log(rest.set(2, 'Libson, Portugal'));
+rest
+  .set('categories', ['Italian', 'Pizeria'])
+  .set('open', 11)
+  .set('open', 11)
+  .set('close', 23)
+  .set(true, 'We are open :)')
+  .set(false, 'We are closed :(');
 
-//mutating variables
-let a = 111;
-let b = 999;
-let x;
-let y;
-const obj = { a: 23, b: 7, c: 14 };
+console.log(rest.get('name'));
+console.log(rest.get(true));
+console.log(rest.get(1));
+
+// Optional chaining: to check if something exists before calling it so that we don't get an error
+// will return undefined if null/undefined, otherwise will return whatever is at open (even 0 or false works) checks first if restaurant.oepningHours exists, and if it does, if .mon exits too.
+// console.log(restaurant.openingHours?.mon?.open);
+// const days = ['mon', 'tues', 'wed', 'thurs', 'fri'];
+// for (const day of days) {
+//   const open = restaurant.openingHours[day]?.open ?? 'closed';
+//   console.log(`On ${day}, we open at ${open}`);
+// }
+
+// //Use optional chaining with null coalescing
+// console.log(restaurant.order?.(0, 1) ?? 'Method does not exist');
+// console.log(restaurant.orderRisotto?.(0, 1) ?? 'Method does not exist');
+
+// const users = [{ name: 'Jonas', email: 'hello@jonas.io' }];
+// console.log(users[0]?.name ?? 'User array empty');
+
+// // This is much better than:
+// if (users.length > 0) console.log(users[0].name);
+// else console.log('user array empty');
+
+// const properties = Object.keys(restaurant.openingHours);
+// console.log(properties);
+// let openStr = `We are open on ${properties.length} days`;
+
+// for (const day of properties) {
+//   openStr += `${day}, `;
+// }
+
+// const values = Object.values(restaurant.openingHours); // creates a list of values [[value]]
+// console.log(values);
+// const entries = Object.entries(restaurant.openingHours); // creates a list of lists [[key,value]]
+// console.log(entries);
+// for (const [index, [key, { open, close }]] of entries.entries()) {
+//   console.log(
+//     `${index + 1}. On ${key} we open at ${open} and close at ${close}`
+//   );
+// }
+
+// // For of loop!!
+// const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+// for (const item of menu) console.log(item);
+
+// // this is like an enumerate
+// for (let [index, item] of menu.entries()) {
+//   index += 1;
+//   console.log(index + 1, item);
+// }
+
+// // we can create object property names using []
+// const weekdays = ['mon', 'tues', 'wed', 'thurs', 'fri'];
+// const openingHours = {
+//   [weekdays[0]]: {
+//     open: 12,
+//     close: 22,
+//   },
+//   [weekdays[1]]: {
+//     open: 11,
+//     close: 23,
+//   },
+//   [`${weekdays[4]}and${weekdays[3]}`]: {
+//     open: 0, // Open 24 hours
+//     close: 24,
+//   },
+// };
+// console.log(openingHours.friandthurs);
+
+// // Destructuring Objects
+// const { name, openingHours, categories } = restaurant; // here, we get the properties of the objects by calling their name and putting it in a variable with the same name. There is no order to this like destructuring lists.
+
+// // To change the name of these properties, we have to do this:
+// console.log(name, openingHours, categories);
+// const {
+//   name: restaurantName, // e.g. restaurantName is the new name of the variable for the name property
+//   openingHours: hours,
+//   categories: tags,
+// } = restaurant;
+// console.log(restaurantName, hours, tags);
+
+// // here we are setting default values AND renaming the variables
+// const { menu = [], starterMenu: starters = [] } = restaurant;
+// console.log(menu, starters);
+
+// //mutating variables
+// let a = 111;
+// let b = 999;
+// let x;
+// let y;
+// const obj = { a: 23, b: 7, c: 14 };
 // { x, y } = obj; //we cannot do this because curly braces signigify a code block. WE can't put "let" or "const" in front of it because a and b have already been declared. So what do we do to reassign a and b to the new obj property a and b?
 
-//This is what we do:
-({ a: a, b: b } = obj); //wrap inside parantheses
-// or just ({a, b} = obj)
-console.log(a, b);
+// //This is what we do:
+// ({ a: a, b: b } = obj); //wrap inside parantheses
+// // or just ({a, b} = obj)
+// console.log(a, b);
 
-// nested objects (we want 2 variables, one called open and another called close)
-const {
-  fri: { open: o, close: c },
-} = openingHours;
-// console.log(fri);
-console.log(o, c);
+// // nested objects (we want 2 variables, one called open and another called close)
+// const {
+//   fri: { open: o, close: c },
+// } = openingHours;
+// // console.log(fri);
+// console.log(o, c);
 
 // // Destructuring Lists
 // const arr = [2, 3, 4];
@@ -194,41 +295,41 @@ console.log(o, c);
 // const arrx = [23, 4, 5];
 // add(...arrx);
 
-//Use ANY data type, return ANY data type, short-circuiting
-console.log(3 || 'Jonas'); // if first operand is truthy, then second operand will not be evaluated
-console.log('' || 'Jonas');
-consoloe.log(true || 0);
-console.log(undefined || null); //undefined is falsey value, but so is null, but since it is the last one, it will return null.
+// //Use ANY data type, return ANY data type, short-circuiting
+// console.log(3 || 'Jonas'); // if first operand is truthy, then second operand will not be evaluated
+// console.log('' || 'Jonas');
+// consoloe.log(true || 0);
+// console.log(undefined || null); //undefined is falsey value, but so is null, but since it is the last one, it will return null.
 
-restaurant.numGuests = 23;
-const guess1 = restaurant.numGuests ? restaurant.numGuests : 10;
-console.log(guests1);
+// restaurant.numGuests = 23;
+// const guess1 = restaurant.numGuests ? restaurant.numGuests : 10;
+// console.log(guests1);
 
-const guests2 = restaurant.numGuests || 10; //if numGuests exists, guests2 = 23. If not, we will get 10. This is better than if else or turnary.
-console.log(guests2);
+// const guests2 = restaurant.numGuests || 10; //if numGuests exists, guests2 = 23. If not, we will get 10. This is better than if else or turnary.
+// console.log(guests2);
 
-console.log(0 && 'Jonas'); //returns 0
-console.log(7 && 'Jonas'); //returns jonas
-conosle.log('Hello' && 23 && null && 'jonas'); // returns null
+// console.log(0 && 'Jonas'); //returns 0
+// console.log(7 && 'Jonas'); //returns jonas
+// conosle.log('Hello' && 23 && null && 'jonas'); // returns null
 
-// pratical example of short circuit
-if (restaurant.orderPizza) {
-  restaurant.orderPizza('mushrooms', 'spinach');
-}
-// if restaurant.orderPizza doesn't exist, then short circuit and do nothing. However, if it does exist, we can change the order
-restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
+// // pratical example of short circuit
+// if (restaurant.orderPizza) {
+//   restaurant.orderPizza('mushrooms', 'spinach');
+// }
+// // if restaurant.orderPizza doesn't exist, then short circuit and do nothing. However, if it does exist, we can change the order
+// restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
 
-// OR operator will return the first truthy value of all operands, or the last operand if all of them are falsey
-// AND operator will return the first falsey value or the last value if all of them are truthy
+// // OR operator will return the first truthy value of all operands, or the last operand if all of them are falsey
+// // AND operator will return the first falsey value or the last value if all of them are truthy
 
-//OR: set default values
-//AND: execute second operand if first one is true
+// //OR: set default values
+// //AND: execute second operand if first one is true
 
-// restaurant.numGuests = 0;
-const guess = restaurant.numGuests || 10;
-console.log(guests);
+// // restaurant.numGuests = 0;
+// const guess = restaurant.numGuests || 10;
+// console.log(guests);
 
-// Nullish coalescing operator: null and undefined (NOT 0 or '') This works for 0 and ''.
-const guestCorrect = restaurant.numGuests ?? 10; // returns 10 if restaurant.numGuests is null or undefined
+// // Nullish coalescing operator: null and undefined (NOT 0 or '') This works for 0 and ''.
+// const guestCorrect = restaurant.numGuests ?? 10; // returns 10 if restaurant.numGuests is null or undefined
 
-console.log(guestCorrect);
+// console.log(guestCorrect);
