@@ -1,43 +1,43 @@
-const game = {
-  team1: 'Bayern Munich',
-  team2: 'Borrussia Dortmund',
-  players: [
-    [
-      'Neuer',
-      'Pavard',
-      'Martinez',
-      'Alaba',
-      'Davies',
-      'Kimmich',
-      'Goretzka',
-      'Coman',
-      'Muller',
-      'Gnarby',
-      'Lewandowski',
-    ],
-    [
-      'Burki',
-      'Schulz',
-      'Hummels',
-      'Akanji',
-      'Hakimi',
-      'Weigl',
-      'Witsel',
-      'Hazard',
-      'Brandt',
-      'Sancho',
-      'Gotze',
-    ],
-  ],
-  score: '4:0',
-  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
-  date: 'Nov 9th, 2037',
-  odds: {
-    team1: 1.33,
-    x: 3.25,
-    team2: 6.5,
-  },
-};
+// const game = {
+//   team1: 'Bayern Munich',
+//   team2: 'Borrussia Dortmund',
+//   players: [
+//     [
+//       'Neuer',
+//       'Pavard',
+//       'Martinez',
+//       'Alaba',
+//       'Davies',
+//       'Kimmich',
+//       'Goretzka',
+//       'Coman',
+//       'Muller',
+//       'Gnarby',
+//       'Lewandowski',
+//     ],
+//     [
+//       'Burki',
+//       'Schulz',
+//       'Hummels',
+//       'Akanji',
+//       'Hakimi',
+//       'Weigl',
+//       'Witsel',
+//       'Hazard',
+//       'Brandt',
+//       'Sancho',
+//       'Gotze',
+//     ],
+//   ],
+//   score: '4:0',
+//   scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+//   date: 'Nov 9th, 2037',
+//   odds: {
+//     team1: 1.33,
+//     x: 3.25,
+//     team2: 6.5,
+//   },
+// };
 
 ///////////////////////////////////////
 // Coding Challenge #2
@@ -63,35 +63,35 @@ BONUS: Create an object called 'scorers' which contains the names of the players
 GOOD LUCK 😀
 */
 
-for (const [goal, player] of game.scored.entries()) {
-  console.log(`Goal ${goal + 1}: ${player}`);
-}
+// for (const [goal, player] of game.scored.entries()) {
+//   console.log(`Goal ${goal + 1}: ${player}`);
+// }
 
-let average = 0;
-const odds = Object.values(game.odds);
-for (let odd of odds) {
-  average += odd;
-}
-average /= odds.length;
-console.log(`Average odd: ${average} `);
+// let average = 0;
+// const odds = Object.values(game.odds);
+// for (let odd of odds) {
+//   average += odd;
+// }
+// average /= odds.length;
+// console.log(`Average odd: ${average} `);
 
-const odds2 = Object.entries(game.odds);
-console.log(odds2);
-for (const [key, value] of odds2) {
-  const teamStr = key === 'x' ? 'draw' : `victory ${game[key]}`;
-  console.log(`Odds of ${teamStr}: ${value}`);
-  // const teamName = game[key] ?? console.log(`Odds of draw: ${value}  `);
-  // teamName && console.log(`Odds of victory ${teamName}: ${value}`);
-}
+// const odds2 = Object.entries(game.odds);
+// console.log(odds2);
+// for (const [key, value] of odds2) {
+//   const teamStr = key === 'x' ? 'draw' : `victory ${game[key]}`;
+//   console.log(`Odds of ${teamStr}: ${value}`);
+//   // const teamName = game[key] ?? console.log(`Odds of draw: ${value}  `);
+//   // teamName && console.log(`Odds of victory ${teamName}: ${value}`);
+// }
 
-const scorers = {};
-for (const scorer of game.scored) {
-  // scorers[scorer] ?? (scorers[scorer] = 0);
-  // scorers[scorer] += 1;
-  scorers[scorer] ? scorers[scorer]++ : (scorers[scorer] = 1);
-}
+// const scorers = {};
+// for (const scorer of game.scored) {
+//   // scorers[scorer] ?? (scorers[scorer] = 0);
+//   // scorers[scorer] += 1;
+//   scorers[scorer] ? scorers[scorer]++ : (scorers[scorer] = 1);
+// }
 
-console.log(scorers);
+// console.log(scorers);
 
 // Coding Challenge #1
 
@@ -143,3 +143,132 @@ GOOD LUCK 😀
 
 // team1 < team2 && console.log('Team1 is more likely to win');
 // team2 < team1 && console.log('Team2 is more likely to win');
+
+///////////////////////////////////////
+// Coding Challenge #3
+
+/* 
+Let's continue with our football betting app! This time, we have a map with a log of the events that happened during the game. The values are the events themselves, and the keys are the minutes in which each event happened (a football game has 90 minutes plus some extra time).
+
+1. Create an array 'events' of the different game events that happened (no duplicates)
+2. After the game has finished, is was found that the yellow card from minute 64 was unfair. So remove this event from the game events log.
+3. Print the following string to the console: "An event happened, on average, every 9 minutes" (keep in mind that a game has 90 minutes)
+4. Loop over the events and log them to the console, marking whether it's in the first half or second half (after 45 min) of the game, like this:
+      [FIRST HALF] 17: ⚽️ GOAL
+
+GOOD LUCK 😀
+*/
+
+// const gameEvents = new Map([
+//   [17, '⚽️ GOAL'],
+//   [36, '🔁 Substitution'],
+//   [47, '⚽️ GOAL'],
+//   [61, '🔁 Substitution'],
+//   [64, '🔶 Yellow card'],
+//   [69, '🔴 Red card'],
+//   [70, '🔁 Substitution'],
+//   [72, '🔁 Substitution'],
+//   [76, '⚽️ GOAL'],
+//   [80, '⚽️ GOAL'],
+//   [92, '🔶 Yellow card'],
+// ]);
+
+// let events = [...new Set([...gameEvents.values()])];
+// console.log(events);
+
+// gameEvents.delete(64);
+
+// console.log(
+//   `An event happend, on average, every ${90 / gameEvents.size} minutes`
+// );
+
+// for (const [minutes, event] of gameEvents.entries()) {
+//   const half = minutes > 45 ? 'SECOND' : 'FIRST';
+//   console.log(`[${half} HALF] ${minutes}: ${event}`);
+// }
+
+const airline = 'TAP Air Portugal';
+const plane = 'A320';
+
+console.log(plane[0]);
+console.log(airline.length);
+
+console.log(airline.indexOf('r')); // gives us the first occurence of 'r'
+console.log(airline.lastIndexOf('r')); // gives us the last occurence of 'r'
+console.log(airline.indexOf('Portugal')); // gives us where first occurence of 'Portugal' starts
+console.log(airline.indexOf('portugal')); // returns -1 because it doesn't exist
+console.log(airline.slice(4)); // returns a NEW string starting at index 4. (since strings are immutable)
+console.log(airline.slice(4, 7));
+
+console.log(airline.slice(0, airline.indexOf(' '))); // will give us the first word
+console.log(airline.slice(airline.lastIndexOf(' ') + 1)); // will give us the last word
+
+console.log('test', airline.slice(-2)); // from -2, grabs us everything up to end of string
+console.log(airline.slice(1, -1));
+
+// although strings are primitive and shouldn't have methods/attributes like objects, behind the scenes, JavaScript makes the string an object when we call methods like .slice() on it.
+console.log(new String('jonas')); // like this...
+console.log(typeof new String('jonas')); // this will return "object"
+console.log(typeof new String('Jonas').slice(1)); // all string methods return primitives so this will return "string"
+
+console.log(airline.toLowerCase());
+console.log(airline.toUpperCase());
+
+const passenger = 'jOnAS'; // should look like 'Jonas'
+const passengerLower = passenger.toLowerCase();
+const passengerCorrect =
+  passengerLower[0].toUpperCase() + passengerLower.slice(1);
+console.log(passengerCorrect);
+
+// comparing emails
+const email = 'hello@jonas.io';
+const loginEmail = ' Hello@Jonas.Io \n';
+
+const lowerEmail = loginEmail.toLowerCase();
+const trimmedEmail = lowerEmail.trim(); // will trim spaces and new lines.
+console.log(trimmedEmail);
+
+const normalizedEmail = loginEmail.toLowerCase().trim();
+console.log(normalizedEmail);
+
+// replacing
+const priceUS = '288.974$';
+const pricePercent = priceUS.replace('$', '%').replace(',', '.'); // will replace first occurence
+console.log(pricePercent);
+
+const announcement =
+  'All passengers come to boarding door 23. Boarding door 23!';
+console.log(announcement.replaceAll('door', 'gate'));
+// console.log(announcement).replace('door', 'gate'); // only replaces first occurence
+console.log(announcement.replace(/door/g, 'gate')); //regex (gets all occurences just like replaceAll)
+
+// Booleans
+const plane2 = 'A320neo';
+console.log(plane2.includes('A320'));
+console.log(plane2.includes('Boeing'));
+console.log(plane2.startsWith('neo'));
+console.log(plane2.endsWith('neo'));
+
+// split and join
+console.log('a+very+nice+string'.split('+'));
+const [firstName, lastName] = 'Jonas Schmedtmann'.split(' ');
+const newName = ['Mr.', firstName, lastName].join(' ');
+console.log(newName);
+
+// padding
+const message = 'Go to gate 23!';
+console.log(message.padStart(25, '+')); // will pad message at start with '+' until it is 25 characters long
+console.log('Jonas'.padStart(20, '+').padEnd(30, '+'));
+
+// masking using padding and slicing
+const maskCreditCard = function (number) {
+  const str = number + ''; // trick to make the number a string
+  const last = str.slice(-4);
+  return last.padStart(str.length, '*');
+};
+
+console.log(maskCreditCard(64637836));
+
+// repeat or multiply a string
+const message1 = 'hello';
+console.log(message1.repeat(10));

@@ -56,17 +56,17 @@ restaurant.orderDelivery({
 });
 
 // set accepts an iterable
-const ordersSet = new Set(['Pasta', 'Pizza', 'Risotto', 'Pasta', 'Pizza']);
-console.log(ordersSet);
+const orderSet = new Set(['Pasta', 'Pizza', 'Risotto', 'Pasta', 'Pizza']);
+console.log(orderSet);
 console.log(new Set('Jonas'));
 console.log(orderSet.size);
 console.log(orderSet.has('Pizza'));
 console.log(orderSet.has('Bread'));
-ordersSet.add('Garlic Bread');
-ordersSet.delete('Risotto');
+orderSet.add('Garlic Bread');
+orderSet.delete('Risotto');
 // we cannot index in a set. all values are unique, and there is no order. don't use a set if you care about the order.
 // ordersSet.clear(); // delete everything in set
-for (const order of ordersSet) console.log(order);
+for (const order of orderSet) console.log(order);
 
 // Example
 const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
@@ -88,6 +88,36 @@ rest
 console.log(rest.get('name'));
 console.log(rest.get(true));
 console.log(rest.get(1));
+
+// cam also make a map from a list of lists which is easier than doing .set if we are initializing it.
+const question = new Map([
+  ['question', 'What is the best programming language in the world?'],
+  [1, 'C'],
+  [2, 'Java'],
+  [3, 'JavaScript'],
+  ['correct', 3],
+  [true, 'Correct'],
+  [false, 'Try Again'],
+]);
+
+// if we want to insert an object as a key to our map, we should create an instance of that object and then put it inside. This way, we use the ACTUAL array being referenced in the heap. The key needs to be the actual reference to the array obviously.
+const arr = [1, 2];
+question.set(arr, 'numbers');
+console.log(question);
+// Convert object to map (we can do it because object.entries returns us a list of lists.)
+console.log(Object.entries(restaurant.openingHours));
+const hoursMap = new Map(Object.entries(restaurant.openingHours));
+console.log(hoursMap);
+
+for (const [key, value] of question) {
+  if (typeof key === 'number') console.log(`Answer ${key}: ${value}`);
+}
+
+// convert map to array
+console.log([...question]);
+//
+console.log([...question.keys()]);
+console.log([...question.values()]);
 
 // Optional chaining: to check if something exists before calling it so that we don't get an error
 // will return undefined if null/undefined, otherwise will return whatever is at open (even 0 or false works) checks first if restaurant.oepningHours exists, and if it does, if .mon exits too.
