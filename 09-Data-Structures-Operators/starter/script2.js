@@ -187,88 +187,140 @@ GOOD LUCK 😀
 //   console.log(`[${half} HALF] ${minutes}: ${event}`);
 // }
 
-const airline = 'TAP Air Portugal';
-const plane = 'A320';
+// const airline = 'TAP Air Portugal';
+// const plane = 'A320';
 
-console.log(plane[0]);
-console.log(airline.length);
+// console.log(plane[0]);
+// console.log(airline.length);
 
-console.log(airline.indexOf('r')); // gives us the first occurence of 'r'
-console.log(airline.lastIndexOf('r')); // gives us the last occurence of 'r'
-console.log(airline.indexOf('Portugal')); // gives us where first occurence of 'Portugal' starts
-console.log(airline.indexOf('portugal')); // returns -1 because it doesn't exist
-console.log(airline.slice(4)); // returns a NEW string starting at index 4. (since strings are immutable)
-console.log(airline.slice(4, 7));
+// console.log(airline.indexOf('r')); // gives us the first occurence of 'r'
+// console.log(airline.lastIndexOf('r')); // gives us the last occurence of 'r'
+// console.log(airline.indexOf('Portugal')); // gives us where first occurence of 'Portugal' starts
+// console.log(airline.indexOf('portugal')); // returns -1 because it doesn't exist
+// console.log(airline.slice(4)); // returns a NEW string starting at index 4. (since strings are immutable)
+// console.log(airline.slice(4, 7));
 
-console.log(airline.slice(0, airline.indexOf(' '))); // will give us the first word
-console.log(airline.slice(airline.lastIndexOf(' ') + 1)); // will give us the last word
+// console.log(airline.slice(0, airline.indexOf(' '))); // will give us the first word
+// console.log(airline.slice(airline.lastIndexOf(' ') + 1)); // will give us the last word
 
-console.log('test', airline.slice(-2)); // from -2, grabs us everything up to end of string
-console.log(airline.slice(1, -1));
+// console.log('test', airline.slice(-2)); // from -2, grabs us everything up to end of string
+// console.log(airline.slice(1, -1));
 
-// although strings are primitive and shouldn't have methods/attributes like objects, behind the scenes, JavaScript makes the string an object when we call methods like .slice() on it.
-console.log(new String('jonas')); // like this...
-console.log(typeof new String('jonas')); // this will return "object"
-console.log(typeof new String('Jonas').slice(1)); // all string methods return primitives so this will return "string"
+// // although strings are primitive and shouldn't have methods/attributes like objects, behind the scenes, JavaScript makes the string an object when we call methods like .slice() on it.
+// console.log(new String('jonas')); // like this...
+// console.log(typeof new String('jonas')); // this will return "object"
+// console.log(typeof new String('Jonas').slice(1)); // all string methods return primitives so this will return "string"
 
-console.log(airline.toLowerCase());
-console.log(airline.toUpperCase());
+// console.log(airline.toLowerCase());
+// console.log(airline.toUpperCase());
 
-const passenger = 'jOnAS'; // should look like 'Jonas'
-const passengerLower = passenger.toLowerCase();
-const passengerCorrect =
-  passengerLower[0].toUpperCase() + passengerLower.slice(1);
-console.log(passengerCorrect);
+// const passenger = 'jOnAS'; // should look like 'Jonas'
+// const passengerLower = passenger.toLowerCase();
+// const passengerCorrect =
+//   passengerLower[0].toUpperCase() + passengerLower.slice(1);
+// console.log(passengerCorrect);
 
-// comparing emails
-const email = 'hello@jonas.io';
-const loginEmail = ' Hello@Jonas.Io \n';
+// // comparing emails
+// const email = 'hello@jonas.io';
+// const loginEmail = ' Hello@Jonas.Io \n';
 
-const lowerEmail = loginEmail.toLowerCase();
-const trimmedEmail = lowerEmail.trim(); // will trim spaces and new lines.
-console.log(trimmedEmail);
+// const lowerEmail = loginEmail.toLowerCase();
+// const trimmedEmail = lowerEmail.trim(); // will trim spaces and new lines.
+// console.log(trimmedEmail);
 
-const normalizedEmail = loginEmail.toLowerCase().trim();
-console.log(normalizedEmail);
+// const normalizedEmail = loginEmail.toLowerCase().trim();
+// console.log(normalizedEmail);
 
-// replacing
-const priceUS = '288.974$';
-const pricePercent = priceUS.replace('$', '%').replace(',', '.'); // will replace first occurence
-console.log(pricePercent);
+// // replacing
+// const priceUS = '288.974$';
+// const pricePercent = priceUS.replace('$', '%').replace(',', '.'); // will replace first occurence
+// console.log(pricePercent);
 
-const announcement =
-  'All passengers come to boarding door 23. Boarding door 23!';
-console.log(announcement.replaceAll('door', 'gate'));
-// console.log(announcement).replace('door', 'gate'); // only replaces first occurence
-console.log(announcement.replace(/door/g, 'gate')); //regex (gets all occurences just like replaceAll)
+// const announcement =
+//   'All passengers come to boarding door 23. Boarding door 23!';
+// console.log(announcement.replaceAll('door', 'gate'));
+// // console.log(announcement).replace('door', 'gate'); // only replaces first occurence
+// console.log(announcement.replace(/door/g, 'gate')); //regex (gets all occurences just like replaceAll)
 
-// Booleans
-const plane2 = 'A320neo';
-console.log(plane2.includes('A320'));
-console.log(plane2.includes('Boeing'));
-console.log(plane2.startsWith('neo'));
-console.log(plane2.endsWith('neo'));
+// // Booleans
+// const plane2 = 'A320neo';
+// console.log(plane2.includes('A320'));
+// console.log(plane2.includes('Boeing'));
+// console.log(plane2.startsWith('neo'));
+// console.log(plane2.endsWith('neo'));
 
-// split and join
-console.log('a+very+nice+string'.split('+'));
-const [firstName, lastName] = 'Jonas Schmedtmann'.split(' ');
-const newName = ['Mr.', firstName, lastName].join(' ');
-console.log(newName);
+// // split and join
+// console.log('a+very+nice+string'.split('+'));
+// const [firstName, lastName] = 'Jonas Schmedtmann'.split(' ');
+// const newName = ['Mr.', firstName, lastName].join(' ');
+// console.log(newName);
 
-// padding
-const message = 'Go to gate 23!';
-console.log(message.padStart(25, '+')); // will pad message at start with '+' until it is 25 characters long
-console.log('Jonas'.padStart(20, '+').padEnd(30, '+'));
+// // padding
+// const message = 'Go to gate 23!';
+// console.log(message.padStart(25, '+')); // will pad message at start with '+' until it is 25 characters long
+// console.log('Jonas'.padStart(20, '+').padEnd(30, '+'));
 
-// masking using padding and slicing
-const maskCreditCard = function (number) {
-  const str = number + ''; // trick to make the number a string
-  const last = str.slice(-4);
-  return last.padStart(str.length, '*');
-};
+// // masking using padding and slicing
+// const maskCreditCard = function (number) {
+//   const str = number + ''; // trick to make the number a string
+//   const last = str.slice(-4);
+//   return last.padStart(str.length, '*');
+// };
 
-console.log(maskCreditCard(64637836));
+// console.log(maskCreditCard(64637836));
 
-// repeat or multiply a string
-const message1 = 'hello';
-console.log(message1.repeat(10));
+// // repeat or multiply a string
+// const message1 = 'hello';
+// console.log(message1.repeat(10));
+///////////////////////////////////////
+// Coding Challenge #4
+
+/* 
+Write a program that receives a list of variable names written in underscore_case and convert them to camelCase.
+
+The input will come from a textarea inserted into the DOM (see code below), and conversion will happen when the button is pressed.
+
+THIS TEST DATA (pasted to textarea)
+underscore_case
+ first_name
+Some_Variable 
+  calculate_AGE
+delayed_departure
+
+SHOULD PRODUCE THIS OUTPUT (5 separate console.log outputs)
+underscoreCase      ✅
+firstName           ✅✅
+someVariable        ✅✅✅
+calculateAge        ✅✅✅✅
+delayedDeparture    ✅✅✅✅✅
+
+HINT 1: Remember which character defines a new line in the textarea 😉
+HINT 2: The solution only needs to work for a variable made out of 2 words, like a_b
+HINT 3: Start without worrying about the ✅. Tackle that only after you have the variable name conversion working 😉
+HINT 4: This challenge is difficult on purpose, so start watching the solution in case you're stuck. Then pause and continue!
+
+Afterwards, test with your own test data!
+
+GOOD LUCK 😀
+*/
+
+document.body.append(document.createElement('textarea'));
+document.body.append(document.createElement('button'));
+document.querySelector('button').addEventListener('click', () => {
+  const text = document
+    .querySelector('textarea')
+    .value.trim()
+    .toLowerCase()
+    .split('\n');
+  const lengthLast = text[text.length - 1].length - 1;
+  for (let i = 0; i < text.length; i++) {
+    text[i] =
+      text[i].slice(0, text[i].indexOf('_')) +
+      text[i][text[i].indexOf('_') + 1].toUpperCase() +
+      text[i].slice(text[i].indexOf('_') + 2);
+    console.log(
+      text[i].trim().padEnd(lengthLast + 4, ' ') + '✅'.repeat(i + 1)
+    );
+  }
+  console.log(text);
+});
