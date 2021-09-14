@@ -251,3 +251,26 @@ btnSort.addEventListener('click', function (e) {
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
+
+// setTimeout(
+//   (ing1, ing2) => console.log(`Here is your pizza with ${ing1} and ${ing2}`),
+//   3000,
+//   'olives',
+//   'spinach'
+// ); // Will call the function after 3 seconds
+
+const ingredients = ['olives', 'spinach'];
+const pizzaTimer = setTimeout(
+  (ing1, ing2) => console.log(`Here is your pizza with ${ing1} and ${ing2}`),
+  3000,
+  ...ingredients
+); // Will call the function after 3 seconds
+console.log('Waiting...'); // JavaScript will run this first while it is waiting
+if (ingredients.includes('spinach')) clearTimeout(pizzaTimer); // this will clear the timer if it contains spinach and stop the callback function
+
+// setInterval(function () {
+//   const now = new Date();
+//   console.log(now);
+// }, 1000);
+
+// set interval will do something every 1 second
